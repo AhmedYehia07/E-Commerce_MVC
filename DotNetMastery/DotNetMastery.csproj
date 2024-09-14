@@ -15,4 +15,9 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\DotNetMastery.DataAccess\DotNetMastery.DataAccess.csproj" />
+    <ProjectReference Include="..\DotNetMastery.Models\DotNetMastery.Models.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -1,7 +1,7 @@
-﻿using DotNetMastery.Models;
+﻿using Bulky.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace DotNetMastery.Data
+namespace Bulky.DataAccess.Data
 {
     public class ApplicationDbContext: DbContext
     {
