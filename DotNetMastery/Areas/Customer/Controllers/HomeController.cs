@@ -3,7 +3,7 @@ using Bulky.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
-namespace DotNetMastery.Controllers
+namespace DotNetMastery.Areas.Customer.Controllers
 {
     public class HomeController : Controller
     {
