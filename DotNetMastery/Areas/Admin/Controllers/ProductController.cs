@@ -12,7 +12,7 @@ namespace DotNetMastery.Areas.Admin.Controllers
     {
         public IActionResult Index()
         {
-            var productList = unitOfWork.Product.GetAll().ToList();
+            var productList = unitOfWork.Product.GetAll("Category").ToList();
             return View(productList);
         }
 
@@ -23,7 +23,7 @@ namespace DotNetMastery.Areas.Admin.Controllers
             var productVM = new ProductVM
             {
                 Product = new Product(),
-                CategoryList = unitOfWork.Category.GetAll().Select(u=> new SelectListItem
+                CategoryList = unitOfWork.Category.GetAll("Category").Select(u=> new SelectListItem
                 {
                     Text = u.Name,
 					Value=u.Id.ToString()

@@ -25,18 +25,32 @@ namespace DotNetMastery.DataAccess.Repository
 			dbSet.Add(entity);
 		}
 
-		public T Get(Expression<Func<T, bool>> filter)
+		public T Get(Expression<Func<T, bool>> filter, string? includeProperties = null)
 		{
 			IQueryable<T> query = dbSet;
 			query = query.Where(filter);
+			if (!string.IsNullOrWhiteSpace(includeProperties))
+			{
+				foreach (var property in includeProperties.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries)) //split the include strings to add them and remove empty ones 
+				{
+					query = query.Include(property);
+				}
+			}
 			return query.FirstOrDefault();
 		}
 
-		public IEnumerable<T> GetAll()
+		public IEnumerable<T> GetAll(string? includeProperties = null)
 		{
-			//IQueryable<T> query = dbSet;
-			//return query.ToList();
-			return dbSet.ToList();
+			IQueryable<T> query = dbSet;
+			if(!string.IsNullOrWhiteSpace(includeProperties))
+			{
+				foreach(var property in includeProperties.Split(new char[] {','},StringSplitOptions.RemoveEmptyEntries)) //split the include strings to add them and remove empty ones 
+				{
+					query = query.Include(property);
+				}
+			}
+			return query.ToList();
+			//return dbSet.ToList();
 		}
 
 		public void Remove(T entity)
