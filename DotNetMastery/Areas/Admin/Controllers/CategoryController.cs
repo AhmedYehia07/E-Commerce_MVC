@@ -5,6 +5,7 @@ using DotNetMastery.DataAccess.Repository.IRepository;
 using Microsoft.AspNetCore.Mvc;
 namespace DotNetMastery.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     public class CategoryController(IUnitOfWork unitOfWork) : Controller
     {
         public IActionResult Index()
@@ -15,7 +16,7 @@ namespace DotNetMastery.Areas.Admin.Controllers
 
         public IActionResult Create()
         {
-            return View();
+            return View(new Category());
         }
         [HttpPost]
         public IActionResult Create(Category obj)

@@ -12,10 +12,14 @@ namespace DotNetMastery.DataAccess.Repository
 	{
 		private readonly ApplicationDbContext _db;
 		public ICategoryRepository Category {  get; private set; }
-		public UnitOfWork(ApplicationDbContext dbContext)
+
+        public IProductRepository Product {  get; private set; }
+
+        public UnitOfWork(ApplicationDbContext dbContext)
         {
             _db = dbContext;
 			Category = new CategoryRepository(_db);
+			Product = new ProductRepository(_db);
         }
         
 		public void Save()
