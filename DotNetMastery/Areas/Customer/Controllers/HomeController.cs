@@ -19,7 +19,13 @@ namespace DotNetMastery.Areas.Customer.Controllers
             return View(productList);
         }
 
-        public IActionResult Privacy()
+		public IActionResult Details(int productId)
+		{
+			Product product = unitOfWork.Product.Get(u=>u.Id == productId,"Category");
+			return View(product);
+		}
+
+		public IActionResult Privacy()
         {
             return View();
         }
