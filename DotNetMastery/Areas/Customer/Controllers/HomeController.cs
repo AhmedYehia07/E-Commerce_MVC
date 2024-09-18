@@ -1,23 +1,22 @@
 
+using Bulky.DataAccess.Data;
 using Bulky.Models;
+using DotNetMastery.DataAccess.Repository;
+using DotNetMastery.DataAccess.Repository.IRepository;
+using DotNetMastery.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
 namespace DotNetMastery.Areas.Customer.Controllers
 {
     [Area("Customer")]
-    public class HomeController : Controller
+    public class HomeController(ILogger<HomeController> logger,IUnitOfWork unitOfWork) : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
-        }
 
         public IActionResult Index()
         {
-            return View();
+            IEnumerable<Product> productList = unitOfWork.Product.GetAll("Category");
+            return View(productList);
         }
 
         public IActionResult Privacy()
