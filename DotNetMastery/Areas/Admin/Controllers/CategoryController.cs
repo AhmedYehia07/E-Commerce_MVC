@@ -2,10 +2,13 @@
 using Bulky.Models;
 using DotNetMastery.DataAccess.Repository;
 using DotNetMastery.DataAccess.Repository.IRepository;
+using DotNetMastery.Utilty;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 namespace DotNetMastery.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = SD.Role_Admin)]
     public class CategoryController(IUnitOfWork unitOfWork) : Controller
     {
         public IActionResult Index()

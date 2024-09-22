@@ -1,6 +1,8 @@
 ﻿using DotNetMastery.DataAccess.Repository.IRepository;
 using DotNetMastery.Models;
 using DotNetMastery.Models.ViewModels;
+using DotNetMastery.Utilty;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.ComponentModel;
@@ -9,7 +11,8 @@ using System.ComponentModel.DataAnnotations;
 namespace DotNetMastery.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class ProductController(IUnitOfWork unitOfWork, IWebHostEnvironment webHost) : Controller
+	[Authorize(Roles = SD.Role_Admin)]
+	public class ProductController(IUnitOfWork unitOfWork, IWebHostEnvironment webHost) : Controller
     {
         public IActionResult Index()
         {
@@ -17,7 +20,7 @@ namespace DotNetMastery.Areas.Admin.Controllers
             return View(productList);
         }
 
-        //[HttpPost,ActionName("Index")]
+        //[HttpPost, ActionName("Index")]
         //public IActionResult Delete(int? id)
         //{
         //    if (id == null || id == 0)
