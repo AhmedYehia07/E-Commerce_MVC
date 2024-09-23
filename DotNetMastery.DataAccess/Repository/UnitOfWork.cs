@@ -15,11 +15,15 @@ namespace DotNetMastery.DataAccess.Repository
 
         public IProductRepository Product {  get; private set; }
 
+        public ICompanyRepository Company {  get; private set; }
+
+
         public UnitOfWork(ApplicationDbContext dbContext)
         {
             _db = dbContext;
 			Category = new CategoryRepository(_db);
 			Product = new ProductRepository(_db);
+			Company = new CompanyRepository(_db);
         }
         
 		public void Save()
