@@ -1,11 +1,13 @@
 ﻿jQuery(function () {
-    jQuery("Input_Role").on('change', function () {
-        var selection = jQuery("Input.Role Option:Selected").text();
-        if (selection == "Company") {
-            jQuery("Input_CompanyId").show();
+    $("#Input_Role").on('change', function () {
+        var box = document.getElementById('Input_Role');
+        var selection = box.options[box.selectedIndex].text;
+        //var selection = $('#Input.Role').find("option:selected").text();
+        if (selection == 'Company') {
+            $('#Input_CompanyId').show();
         }
         else {
-            jQuery("Input_CompanyId").hide();
+            $('#Input_CompanyId').hide();
         }
-    }).trigger('change');
-});
+    })
+})
