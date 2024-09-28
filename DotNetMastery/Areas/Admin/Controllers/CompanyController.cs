@@ -10,7 +10,7 @@ namespace DotNetMastery.Areas.Admin.Controllers
 {
     [Area("Admin")]
     [Authorize(Roles = SD.Role_Admin)]
-    public class CompanyController(IUnitOfWork unitOfWork, IWebHostEnvironment webHost) : Controller
+    public class CompanyController(IUnitOfWork unitOfWork) : Controller
     {
         public IActionResult Index()
         {

@@ -16,7 +16,7 @@ namespace DotNetMastery.Areas.Admin.Controllers
     {
         public IActionResult Index()
         {
-            var productList = unitOfWork.Product.GetAll("Category").ToList();
+            var productList = unitOfWork.Product.GetAll(includeProperties:"Category").ToList();
             return View(productList);
         }
 
