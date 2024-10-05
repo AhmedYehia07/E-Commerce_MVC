@@ -14,6 +14,8 @@ namespace DotNetMastery.DataAccess.Repository.IRepository
 		public ICompanyRepository Company { get; }
 		public IShoppingCartRepository ShoppingCart { get; }
 		public IApplicationUserRepository ApplicationUser { get; }
+		public IOrderHeaderRepository OrderHeader { get; }
+		public IOrderDetailRepository OrderDetail { get; }
         public void Save();
 	}
 }
